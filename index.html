@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test</title>
+  <style>
+    body, html {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      height: 100vh;
+      overflow: hidden;
+    }
+    body {
+     background: url('spazio1.jpg'), black;
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-position: top 0px left 0vw, top center;
+     display: flex;
+     align-items: center;
+     flex-direction: column;
+   }
+   .shuttle {
+    position: absolute;
+    right: -5vw;
+    bottom: 35vh;
+    animation: shuttleFlies 16s linear 3s infinite forwards;
+    width: 5vw;
+    z-index: 3;
+   }
+   @keyframes shuttleFlies {
+    from {
+      right: -5vw;
+    }
+    to {
+      right: 100vw;
+    }
+   }
+   .moon {
+    position: absolute;
+    right: 15vw;
+    bottom: -10vh;
+    animation: moonMoves 60s linear 1s infinite forwards;
+    height: 4vh;
+    z-index: 2;
+   }
+   @keyframes moonMoves {
+    0% {
+      bottom: -10vh;
+      right: 15vw;
+      height: 4vh;
+      transform: rotateZ(0deg);
+    }
+    25% {
+      bottom: 25vh;
+      transform: rotateZ(360deg);
+      
+    }
+    45% {
+      right: 5vw;
+    }
+    50% {
+      bottom: 50vh;
+      height: 12vh;
+      transform: rotateZ(720deg);
+    }
+    55% {
+      right: 5vw;
+    }
+    75% {
+      bottom: 75vh;
+      transform: rotateZ(1080deg);
+    }
+    100% {
+      bottom: 100vh;
+      right: 15vw;
+      height: 4vh;
+      transform: rotateZ(1440deg);
+    }
+   }
+   .earth {
+    position: absolute;
+    left: -1vw;
+    top: 0vh;
+    animation: earthRotates 300s linear 0s infinite forwards;
+    width: 30vw;
+    z-index: 2;
+   }
+   @keyframes earthRotates {
+    from {
+      transform: rotateZ(0deg);
+    }
+    to {
+      transform: rotateZ(-360deg);
+    }
+   }
+   main {
+    position: absolute;
+    width: 800px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 150px;
+    z-index: 5;
+    padding: 20px;
+    color: white;
+    overflow: hidden;
+   }
+
+   .main-title-container {
+    text-align: center;
+    color: yellow;
+    font-style: italic;
+    text-shadow: 
+    -3px -3px 3px black,  
+    3px -3px 1px black,   
+    -3px 3px 1px black,   
+    3px 3px 1px black;
+    font-size: 1em;
+    animation: startMainTitle 3s linear 0s 1 forwards;
+    display: flex;
+    justify-content: center;
+    z-index: 5;
+   }
+
+   @keyframes startMainTitle {
+    from {
+      opacity: 0.1;
+      font-size: 0.1em;
+    }
+    to {
+      opacity: 1;
+      font-size: 5em;
+    }
+   }
+   
+   .main-title-div1, .main-title-div2 {
+    display: inline-block;
+   }
+
+   .main-title-div1 {
+    transform: rotateY(0deg) rotateX(0deg);
+    animation: rotateTitle1 3s ease-in 0s 1 forwards;
+   }
+   
+   .main-title-div2 {
+    transform: rotateY(360deg) rotateX(360deg);
+    animation: rotateTitle2 3s ease-in 0s 1 forwards;
+   }
+
+   @keyframes rotateTitle1 {
+    from {
+      transform: rotateY(0deg) rotateX(0deg);
+    }
+    to {
+      transform: rotateY(360deg) rotateX(360deg);
+    }
+   }
+
+   @keyframes rotateTitle2 {
+    from {
+      transform: rotateY(360deg) rotateX(360deg);
+    }
+    to {
+      transform: rotateY(0deg) rotateX(0deg);
+    }
+   }
+
+   /* Background initially hidden */
+   .main-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1), rgba(0,0,0,0.5), rgba(0,0,0,0.9));
+    z-index: -1;
+    opacity: 0; /* Inizia invisibile */
+    transition: opacity 3s ease-in-out; /* Aggiungi transizione */
+   }
+
+   .main-background.visible {
+    opacity: 1; /* Appare gradualmente */
+   }
+  </style>
+</head>
+
+<body>
+  <img src="shuttle.png" class="shuttle" />
+  <img src="moon.png" class="moon" />
+  <img src="earth.png" class="earth" />
+  <main>
+    <div class="main-title-container">
+      <span class="main-title-div1">Astronomy</span>&nbsp;<span class="main-title-div2">Journal</span>
+    </div>
+    <div id="background" class="main-background"></div> <!-- Sfondo con effetto fumo -->
+  </main>
+
+  <script>
+    // Mostra il background con transizione dopo 4 secondi
+    setTimeout(function() {
+      document.getElementById('background').classList.add('visible');
+    }, 4000);
+  </script>
+</body>
+
+</html>
