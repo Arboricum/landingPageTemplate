@@ -109,6 +109,7 @@
    }
 
    .main-title-container {
+    position: relative;
     text-align: center;
     color: yellow;
     font-style: italic;
@@ -122,6 +123,7 @@
     display: flex;
     justify-content: center;
     z-index: 5;
+    width: 100%;
    }
 
    @keyframes startMainTitle {
@@ -183,6 +185,26 @@
 
    .main-background.visible {
     opacity: 1; /* Appare gradualmente */
+   }
+   @media screen and (max-width: 900px) {
+    main {
+      width: 90%;
+    }
+    .main-title-container {
+      flex-direction: column;
+    }
+    .shuttle {
+      width: 100px;
+      right: -100px;
+    }
+    @keyframes shuttleFlies {
+    from {
+      right: -100px;
+    }
+    to {
+      right: 100vw;
+    }
+   }
    }
   </style>
 </head>
