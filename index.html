@@ -118,7 +118,7 @@
     3px -3px 1px black,   
     -3px 3px 1px black,   
     3px 3px 1px black;
-    font-size: 1em;
+    font-size: 0.1em;
     animation: startMainTitle 3s linear 0s 1 forwards;
     display: flex;
     justify-content: center;
@@ -193,7 +193,18 @@
     .main-title-container {
       flex-direction: column;
       font-size: medium;
+      animation: startMainTitle 3s linear 0s 1 forwards;
     }
+    @keyframes startMainTitle2 {
+    from {
+      opacity: 0.1;
+      font-size: 0.1em;
+    }
+    to {
+      opacity: 1;
+      font-size: 2em;
+    }
+   }
     .shuttle {
       width: 100px;
       right: -100px;
